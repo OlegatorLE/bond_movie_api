@@ -2,40 +2,32 @@
 
 {% block content %}
 <h1>
-    Movies List
+    Actors List
 </h1>
 
 
-{% if movie_list %}
+{% if actor_list %}
 <table class="table">
     <tr>
         <th>Num</th>
-        <th>Title</th>
-        <th>Year</th>
-        <th>Director</th>
-        <th>Actors</th>
+        <th>Name</th>
+        <th>Movies</th>
         <th>Update</th>
         <th>Delete</th>
     </tr>
 
-    {% for movie in movie_list %}
+    {% for actor in actor_list %}
     <tr>
         <td>
-            {{ movie.id }}
+            {{ actor.id }}
         </td>
         <td>
-            {{ movie.title }}
+            {{ actor.name }}
         </td>
         <td>
-            {{ movie.release_year }}
-        </td>
-        <td>
-            {{ movie.director }}
-        </td>
-        <td>
-            {% for actor in movie.actors.all %}
-                {{ actor.name }}
-            {% if not forloop.last %},{% endif %}
+            {% for movie in actor.movie_set.all %}
+                {{ movie.title }}
+                {% if not forloop.last %},{% endif %}
             {% endfor %}
         </td>
         <td>

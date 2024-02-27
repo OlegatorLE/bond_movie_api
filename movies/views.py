@@ -23,3 +23,9 @@ class MovieListView(generic.ListView):
     model = Movie
     queryset = Movie.objects.order_by('id')
     paginate_by = 25
+
+
+class ActorListView(generic.ListView):
+    model = Actor
+    queryset = Actor.objects.order_by("id")
+    paginate_by = 25
