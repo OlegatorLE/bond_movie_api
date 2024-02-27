@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>
+    Movies List
+</h1>
+
+
+{% if movie_list %}
+<table class="table">
+    <tr>
+        <th>Num</th>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Director</th>
+        <th>Actors</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+
+    {% for movie in movie_list %}
+    <tr>
+        <td>
+            {{ movie.id }}
+        </td>
+        <td>
+            {{ movie.title }}
+        </td>
+        <td>
+            {{ movie.release_year }}
+        </td>
+        <td>
+            {{ movie.director }}
+        </td>
+        <td>
+            {% for actor in movie.actors.all %}
+                {{ actor.name }},
+            {% endfor %}
+        </td>
+        <td>
+                Update
+        </td>
+        <td>
+                Delete
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% else %}
+<p>There are no manufacturers in the service.</p>
+{% endif %}
+{% endblock %}

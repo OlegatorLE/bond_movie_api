@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>The Movie database</h1>
+    <p>Welcome to TOP 250 Movies on IMDB!</p>
+    <p>The Movie database has the following record counts:</p>
+    <ul>
+        <li><strong>Movies:</strong> {{ num_movies }}</li>
+        <li><strong>Actors:</strong> {{ num_actors }}</li>
+    </ul>
+
+
+{% endblock %}

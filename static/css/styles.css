@@ -1,0 +1,12 @@
+body {
+    margin-top: 20px;
+    font-size: 12px;
+}
+tr {
+  line-height: 0.4;
+}
+
+.link-to-page {
+    float: right;
+    margin: 0 2px 0 2px;
+}
