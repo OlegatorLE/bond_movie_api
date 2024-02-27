@@ -3,6 +3,9 @@
 {% block content %}
 <h1>
     Movies List
+    <a href="{% url 'movies:movies-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
 </h1>
 
 
@@ -34,15 +37,19 @@
         </td>
         <td>
             {% for actor in movie.actors.all %}
-                {{ actor.name }}
+            {{ actor.name }}
             {% if not forloop.last %},{% endif %}
             {% endfor %}
         </td>
         <td>
+            <a style="color: blue" href="{% url 'movies:movies-update' pk=movie.pk %}">
                 Update
+            </a>
         </td>
         <td>
+            <a style="color: red" href="{% url 'movies:movies-delete' pk=movie.pk %}">
                 Delete
+            </a>
         </td>
     </tr>
     {% endfor %}

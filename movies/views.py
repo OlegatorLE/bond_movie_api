@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
 from movies.models import Movie, Actor
@@ -23,6 +24,23 @@ class MovieListView(generic.ListView):
     model = Movie
     queryset = Movie.objects.order_by('id')
     paginate_by = 25
+
+
+class MovieCreateView(generic.CreateView):
+    model = Movie
+    fields = "__all__"
+    success_url = reverse_lazy("movies:movies-list")
+
+
+class MovieUpdateView(generic.UpdateView):
+    model = Movie
+    fields = "__all__"
+    success_url = reverse_lazy("movies:movies-list")
+
+
+class MovieDeleteView(generic.DeleteView):
+    model = Movie
+    success_url = reverse_lazy("movies:movies-list")
 
 
 class ActorListView(generic.ListView):
