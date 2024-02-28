@@ -29,6 +29,10 @@ class MovieListView(FilterView):
     paginate_by = 25
 
 
+class MovieDetailView(generic.DetailView):
+    model = Movie
+
+
 class MovieCreateView(generic.CreateView):
     model = Movie
     fields = "__all__"

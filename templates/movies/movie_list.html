@@ -4,7 +4,7 @@
 <h1>
     Movies List
     <a href="{% url 'movies:movies-create' %}" class="btn btn-primary link-to-page">
-      Create
+        Create
     </a>
 </h1>
 
@@ -27,7 +27,9 @@
             {{ movie.id }}
         </td>
         <td>
-            {{ movie.title }}
+            <a href="{% url 'movies:movies-detail' pk=movie.pk %}">
+                {{ movie.title }}
+            </a>
         </td>
         <td>
             {{ movie.release_year }}
