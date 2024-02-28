@@ -10,3 +10,10 @@ tr {
     float: right;
     margin: 0 2px 0 2px;
 }
+
+.filter-form {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-family: 'Arial', sans-serif;
+}

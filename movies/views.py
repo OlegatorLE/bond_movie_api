@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
-
+from .filters import MovieFilter
+from django_filters.views import FilterView
 from movies.models import Movie, Actor
 
 
@@ -20,9 +21,11 @@ def index(request):
     return render(request, "movies/index.html", context=context)
 
 
-class MovieListView(generic.ListView):
+class MovieListView(FilterView):
     model = Movie
     queryset = Movie.objects.order_by('id')
+    filterset_class = MovieFilter
+    template_name = "movies/movie_list.html"
     paginate_by = 25
 
 
