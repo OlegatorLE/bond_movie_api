@@ -26,7 +26,7 @@ def index(request):
 
 class MovieListView(FilterView):
     model = Movie
-    queryset = Movie.objects.order_by("id")
+    queryset = Movie.objects.order_by("id").prefetch_related("actors")
     filterset_class = MovieFilter
     template_name = "movies/movie_list.html"
     paginate_by = 25
@@ -57,7 +57,7 @@ class MovieDeleteView(generic.DeleteView):
 
 class ActorListView(generic.ListView):
     model = Actor
-    queryset = Actor.objects.order_by("id")
+    queryset = Actor.objects.order_by("id").prefetch_related("movie_set")
     paginate_by = 25
 
 
@@ -85,12 +85,12 @@ class ActorDeleteView(generic.DeleteView):
 
 
 class MovieViewSet(viewsets.ModelViewSet):
-    queryset = Movie.objects.all()
+    queryset = Movie.objects.all().prefetch_related("actors")
     serializer_class = MovieSerializer
     pagination_class = CustomPagination
 
 
 class ActorViewSet(viewsets.ModelViewSet):
-    queryset = Actor.objects.all()
+    queryset = Actor.objects.all().prefetch_related("movie_set")
     serializer_class = ActorSerializer
     pagination_class = CustomPagination
