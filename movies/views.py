@@ -4,6 +4,9 @@ from django.views import generic
 from .filters import MovieFilter
 from django_filters.views import FilterView
 from movies.models import Movie, Actor
+from rest_framework import viewsets
+from .serializers import MovieSerializer, ActorSerializer
+from .pagination import CustomPagination
 
 
 def index(request):
@@ -79,3 +82,15 @@ class ActorUpdateView(generic.UpdateView):
 class ActorDeleteView(generic.DeleteView):
     model = Actor
     success_url = reverse_lazy("movies:actors-list")
+
+
+class MovieViewSet(viewsets.ModelViewSet):
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
+    pagination_class = CustomPagination
+
+
+class ActorViewSet(viewsets.ModelViewSet):
+    queryset = Actor.objects.all()
+    serializer_class = ActorSerializer
+    pagination_class = CustomPagination

@@ -1,4 +1,5 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 
 from .views import (
     index,
@@ -12,7 +13,14 @@ from .views import (
     ActorUpdateView,
     ActorDeleteView,
     ActorDetailView,
+    MovieViewSet,
+    ActorViewSet,
 )
+
+router = routers.DefaultRouter()
+router.register("movies", MovieViewSet)
+router.register("actors", ActorViewSet)
+
 
 urlpatterns = [
     path("", index, name="index"),
@@ -26,6 +34,7 @@ urlpatterns = [
     path("actors/create/", ActorCreateView.as_view(), name="actors-create"),
     path("actors/<int:pk>/update/", ActorUpdateView.as_view(), name="actors-update"),
     path("actors/<int:pk>/delete/", ActorDeleteView.as_view(), name="actors-delete"),
+    path("api/", include(router.urls), name="api-root"),
 ]
 
 app_name = "movies"
