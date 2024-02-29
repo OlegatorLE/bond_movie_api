@@ -23,7 +23,7 @@ def index(request):
 
 class MovieListView(FilterView):
     model = Movie
-    queryset = Movie.objects.order_by('id')
+    queryset = Movie.objects.order_by("id")
     filterset_class = MovieFilter
     template_name = "movies/movie_list.html"
     paginate_by = 25

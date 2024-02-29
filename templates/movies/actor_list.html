@@ -26,15 +26,15 @@
         </td>
         <td>
             {% for movie in actor.movie_set.all %}
-                {{ movie.title }}
-                {% if not forloop.last %},{% endif %}
+            {{ movie.title }}
+            {% if not forloop.last %},{% endif %}
             {% endfor %}
         </td>
         <td>
-                Update
+            Update
         </td>
         <td>
-                Delete
+            Delete
         </td>
     </tr>
     {% endfor %}

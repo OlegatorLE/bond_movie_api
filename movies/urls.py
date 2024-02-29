@@ -18,7 +18,6 @@ urlpatterns = [
     path("movies/<int:pk>/update/", MovieUpdateView.as_view(), name="movies-update"),
     path("movies/<int:pk>/delete/", MovieDeleteView.as_view(), name="movies-delete"),
     path("actors/", ActorListView.as_view(), name="actors-list"),
-
 ]
 
 app_name = "movies"

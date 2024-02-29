@@ -4,7 +4,7 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-lg-4">
-            <img src="{{ movie.poster }}" class="img-fluid" alt="Poster for {{ movie.title }}" />
+            <img src="{{ movie.poster }}" class="img-fluid" alt="Poster for {{ movie.title }}"/>
         </div>
         <div class="col-lg-8">
             <h1>{{ movie.title }}</h1>
@@ -18,9 +18,9 @@
             <h3>Actors</h3>
             <ul>
                 {% for actor in movie.actors.all %}
-                    <li>{{ actor.name }}</li>
+                <li>{{ actor.name }}</li>
                 {% empty %}
-                    <li>No actors</li>
+                <li>No actors</li>
                 {% endfor %}
             </ul>
         </div>
