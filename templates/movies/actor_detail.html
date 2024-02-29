@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><h3>{{ actor.name }}</h3></td>
+                    <td>
+                        <a href="{% url 'movies:actors-update' pk=actor.pk %}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{% url 'movies:actors-delete' pk=actor.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Movies</h2>
+            <div class="d-flex flex-row">
+                {% for movie in actor.movie_set.all %}
+                <div class="mr-3">
+                    <a href="{% url 'movies:movies-detail' pk=movie.pk %}">{{ movie.title }}<br>
+                        <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="img-thumbnail" width="100">
+                    </a>
+                </div>
+                {% empty %}
+                <p>No movies</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

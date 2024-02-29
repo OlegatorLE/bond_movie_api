@@ -23,6 +23,11 @@
                 <li>No actors</li>
                 {% endfor %}
             </ul>
+            <div>
+                <a href="{% url 'movies:movies-update' pk=movie.pk %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'movies:movies-delete' pk=movie.pk %}" class="btn btn-danger" style="display: inline;">Delete</a>
+
+            </div>
         </div>
     </div>
 </div>

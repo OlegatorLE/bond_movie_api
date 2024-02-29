@@ -42,7 +42,9 @@ class MovieCreateView(generic.CreateView):
 class MovieUpdateView(generic.UpdateView):
     model = Movie
     fields = "__all__"
-    success_url = reverse_lazy("movies:movies-list")
+
+    def get_success_url(self):
+        return reverse_lazy("movies:movies-detail", kwargs={"pk": self.object.pk})
 
 
 class MovieDeleteView(generic.DeleteView):
@@ -54,3 +56,26 @@ class ActorListView(generic.ListView):
     model = Actor
     queryset = Actor.objects.order_by("id")
     paginate_by = 25
+
+
+class ActorDetailView(generic.DetailView):
+    model = Actor
+
+
+class ActorCreateView(generic.CreateView):
+    model = Actor
+    fields = "__all__"
+    success_url = reverse_lazy("movies:actors-list")
+
+
+class ActorUpdateView(generic.UpdateView):
+    model = Actor
+    fields = "__all__"
+
+    def get_success_url(self):
+        return reverse_lazy("movies:actors-detail", kwargs={"pk": self.object.pk})
+
+
+class ActorDeleteView(generic.DeleteView):
+    model = Actor
+    success_url = reverse_lazy("movies:actors-list")

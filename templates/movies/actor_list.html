@@ -12,8 +12,6 @@
         <th>Num</th>
         <th>Name</th>
         <th>Movies</th>
-        <th>Update</th>
-        <th>Delete</th>
     </tr>
 
     {% for actor in actor_list %}
@@ -22,19 +20,15 @@
             {{ actor.id }}
         </td>
         <td>
-            {{ actor.name }}
+            <a href="{% url 'movies:actors-detail' pk=actor.pk %}">
+                {{ actor.name }}
+            </a>
         </td>
         <td>
             {% for movie in actor.movie_set.all %}
             {{ movie.title }}
             {% if not forloop.last %},{% endif %}
             {% endfor %}
-        </td>
-        <td>
-            Update
-        </td>
-        <td>
-            Delete
         </td>
     </tr>
     {% endfor %}
